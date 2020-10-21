@@ -1,5 +1,7 @@
+/*
 import React from 'react';
 import ReactDOM from 'react-dom';
+*/
 /* import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -125,8 +127,8 @@ ReactDOM.render(
 )
 */
 /* 1.5*/
+/*
 const Header = (props) => {
-  /* console.log(props) */
   return (
   <div><h1>{props.coursename}</h1></div>
   )
@@ -181,4 +183,57 @@ const App = () => {
     </div>
   )
 }
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root')) 
+*/
+
+/* Stateful component
+import React,{useState} from 'react'
+import ReactDom from 'react-dom'
+
+const App = () => {
+  const [counter,setCounter] = useState(0)
+
+  setTimeout(
+    () => setCounter(counter +1),
+    1000
+  )
+
+  return (
+  <div>{counter}</div>
+  )
+}
+
+ReactDom.render(
+  <App/>,
+  document.getElementById('root')
+) */
+
+/* 组建状态，事件处理*/
+import React,{useState} from 'react'
+import ReactDom from 'react-dom'
+
+const Hello = (props) => {
+  return (
+    <div>
+      <p>
+        Hello {props.name},you are {props.age} years old
+      </p>
+    </div>
+  )
+}
+const App = () => {
+  const name = 'Felix'
+  const age = 13
+
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello name="Maya" age={13+10} />
+      <Hello name={name} age={age} />
+    </div>
+  )
+}
+ReactDom.render(
+  <App/>,
+  document.getElementById('root')
+)
