@@ -185,42 +185,21 @@ const App = () => {
 }
 ReactDOM.render(<App />, document.getElementById('root')) 
 */
-
-/* Stateful component
+/* 组建状态，事件处理 1.4.1
 import React,{useState} from 'react'
 import ReactDom from 'react-dom'
 
-const App = () => {
-  const [counter,setCounter] = useState(0)
-
-  setTimeout(
-    () => setCounter(counter +1),
-    1000
-  )
-
-  return (
-  <div>{counter}</div>
-  )
-}
-
-ReactDom.render(
-  <App/>,
-  document.getElementById('root')
-) */
-
-/* 组建状态，事件处理*/
-import React,{useState} from 'react'
-import ReactDom from 'react-dom'
-
-const Hello = (props) => {
-  const bornYear = () => {
-    const yearNow = new Date().getFullYear()
-    return yearNow - props.age
-  }
+const Hello = ({name,age}) => {
+  //const { name,age } = props
+  const bornYear = () => new Date().getFullYear() - age
+  //const bornYear = () => {
+  //  const yearNow = new Date().getFullYear()
+  //  return yearNow - props.age
+  //}
   return (
     <div>
       <p>
-        Hello {props.name},you are {props.age} years old
+        Hello {name}, you are {age} years old
       </p>
   <p>So you were probably born in {bornYear()}</p>
     </div>
@@ -233,11 +212,64 @@ const App = () => {
   return (
     <div>
       <h1>Greetings</h1>
-      <Hello name="Maya" age={13+10} />
+      <Hello name="Maya" age={14+10} />
       <Hello name={name} age={age} />
     </div>
   )
 }
+ReactDom.render(
+  <App/>,
+  document.getElementById('root')
+)*/
+/* Stateful component 1.4.2 
+import React,{useState} from 'react'
+import ReactDom from 'react-dom'
+
+const App = () => {
+  const [counter,setCounter] = useState(0)
+
+  //setTimeout(
+  //  () => setCounter(counter +1),
+  //  1000
+  //)
+
+  return (
+  <div>
+    <div>{counter}</div>
+    <button onClick={() => setCounter(counter + 1)}>plus</button>
+    <button onClick={() => setCounter(0)}>zero</button>
+  </div>
+  )
+}
+
+ReactDom.render(
+  <App/>,
+  document.getElementById('root')
+)*/
+/* Complex state */
+import React,{useState} from 'react'
+import ReactDom from 'react-dom'
+
+const App = (props) => {
+  const [left,setLeft] = useState(0)
+  const [right,setRight] = useState(0)
+
+  return(
+    <div>
+      <div>
+        {left}
+        <button onClick={() => setLeft(left + 1)}>
+          left
+        </button>
+        <button onClick={() => setRight(right + 1)}>
+          right
+        </button>
+        {right}
+      </div>
+    </div>
+  )
+}
+
 ReactDom.render(
   <App/>,
   document.getElementById('root')
